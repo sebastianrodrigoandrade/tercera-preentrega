@@ -1,0 +1,50 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-12  col-md-4">
+                <div class="card">
+                    <img src="{% static 'AppCoder/assets/img/testimonials-2.jpg' %}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Pichi González</h5>
+                        <p class="card-text">Soy Mg en Análisis de datos</p>
+                        <a class="btn btn-danger" href="">Enviar mensaje</a>
+                    </div>
+                </div>
+               
+
+            </div>
+
+            <div class="col-12  col-md-4">
+                <div class="card">
+                    <img src="{% static 'AppCoder/assets/img/testimonials-1.jpg' %}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Delia Gómez</h5>
+                        <p class="card-text">Fundé MercadoLibre</p>
+                        <a class="btn btn-danger" href="">Enviar mensaje</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12  col-md-4">
+                <div class="card">
+                    <img src="{% static 'AppCoder/assets/img/testimonials-3.jpg' %}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Federica Láinez</h5>
+                        <p class="card-text">Dirijo la carrera de Desarrollo Web desde 2015</p>
+                        <a class="btn btn-danger" href="">Enviar mensaje</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
