@@ -2,49 +2,86 @@
 
 {% load static %}
 
-
 {% block contenido %}
 <main>
     <div class="container">
+        {% if user.is_authenticated %}
+        <!-- Botón para agregar profesor -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <a class="btn btn-primary" href="{% url 'agregar_profesor' %}">Agregar Profesor</a>
+            </div>
+        </div>
+        <!-- Fin del botón -->
+        
+        <!-- Tabla de profesores -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h2>Lista de Profesores</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for profesor in profesores %}
+                        <tr>
+                            <td>{{ profesor.id }}</td>
+                            <td>{{ profesor.nombre }}</td>
+                            <td>{{ profesor.descripcion }}</td>
+                            <td>
+                                <a href="{% url 'editar_profesor' profesor.id %}" class="btn btn-warning btn-sm mr-1">Editar</a>
+                                <a href="{% url 'eliminar_profesor' profesor.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Fin de la tabla de profesores -->
+        {% endif %}
+        <!-- Tarjetas de ejemplo  -->
         <div class="row">
-            <div class="col-12  col-md-4">
+            <div class="col-12 col-md-4">
                 <div class="card">
-                    <img src="{% static 'AppCoder/assets/img/testimonials-2.jpg' %}"/>
+                    <img src="{% static 'AppCoder/assets/img/testimonials-2.jpg' %}" />
                     <div class="card-body">
                         <h5 class="card-title">Pichi González</h5>
                         <p class="card-text">Soy Mg en Análisis de datos</p>
                         <a class="btn btn-danger" href="">Enviar mensaje</a>
                     </div>
                 </div>
-               
-
             </div>
 
-            <div class="col-12  col-md-4">
+            <div class="col-12 col-md-4">
                 <div class="card">
-                    <img src="{% static 'AppCoder/assets/img/testimonials-1.jpg' %}"/>
+                    <img src="{% static 'AppCoder/assets/img/testimonials-1.jpg' %}" />
                     <div class="card-body">
                         <h5 class="card-title">Delia Gómez</h5>
                         <p class="card-text">Fundé MercadoLibre</p>
                         <a class="btn btn-danger" href="">Enviar mensaje</a>
                     </div>
                 </div>
-
             </div>
-            <div class="col-12  col-md-4">
+            
+            <div class="col-12 col-md-4">
                 <div class="card">
-                    <img src="{% static 'AppCoder/assets/img/testimonials-3.jpg' %}"/>
+                    <img src="{% static 'AppCoder/assets/img/testimonials-3.jpg' %}" />
                     <div class="card-body">
                         <h5 class="card-title">Federica Láinez</h5>
                         <p class="card-text">Dirijo la carrera de Desarrollo Web desde 2015</p>
                         <a class="btn btn-danger" href="">Enviar mensaje</a>
                     </div>
                 </div>
-
             </div>
         </div>
+        <!-- Fin de las tarjetas de ejemplo -->
+        
     </div>
 </main>
-
-
 {% endblock %}

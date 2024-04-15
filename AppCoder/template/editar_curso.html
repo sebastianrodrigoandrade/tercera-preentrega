@@ -1,17 +1,16 @@
 {% extends "padre.html" %}
+{% load static %}
 
-{%load static %}
-
-{%block contenido %}
-
+{% block contenido %}
     <form action="{% url 'editar_curso' curso.id %}" method="POST">
         {% csrf_token %}
         <p>Nombre</p>
-        {{mi_formulario.nombre}}
+        {{ form.nombre }}
         <p>Camada</p>
-        {{mi_formulario.camada}}
-        <button clss="btn btn-primary">Enviar</button>
+        {{ form.camada }}
+        <button class="btn btn-primary">Enviar</button>
     </form>
-
-{%endblock %}
-
+    {% if curso.id %}
+        <a href="{% url 'editar_curso' curso.id %}" class="btn btn-warning btn-sm mr-1">Editar</a>
+    {% endif %}
+{% endblock %}

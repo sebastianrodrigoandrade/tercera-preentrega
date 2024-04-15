@@ -1,0 +1,32 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <h1>Listado de Profesores</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profesor in profesores %}
+            <tr>
+                <td>{{ profesor.id }}</td>
+                <td>{{ profesor.nombre }}</td>
+                <td>{{ profesor.especialidad }}</td>
+                <td>{{ profesor.correo }}</td>
+                <td>
+                    <a href="{% url 'editar_profesor' profesor.id %}">Editar</a>
+                    <a href="{% url 'eliminar_profesor' profesor.id %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'agregar_profesor' %}">Agregar Profesor</a>
+{% endblock %}
